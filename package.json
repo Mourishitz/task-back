@@ -1,0 +1,26 @@
+{
+  "name": "maask-task-back",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "@hono/node-server": "^1.19.5",
+    "@supabase/supabase-js": "^2.75.0",
+    "@types/knex": "^0.15.2",
+    "dotenv": "^17.2.3",
+    "hono": "^4.9.12",
+    "jose": "^6.1.0",
+    "knex": "^3.1.0",
+    "pg": "^8.16.3",
+    "redis": "^5.8.3",
+    "zod": "^4.1.12"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.21",
+    "tsx": "^4.7.1",
+    "typescript": "^5.8.3"
+  }
+}

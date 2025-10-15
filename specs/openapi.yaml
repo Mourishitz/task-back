@@ -1,0 +1,133 @@
+openapi: 3.1.0
+info:
+  title: Task Back Maask 
+  version: 1.0.0
+  description: Generated from Insomnia export
+servers:
+  - url: http://localhost:3000
+paths:
+  /:
+    get:
+      summary: Hello Hono!
+      operationId: getHello
+      responses:
+        '200':
+          description: Successful response
+      parameters: []
+      security: []
+
+  /users/me:
+    get:
+      summary: Me
+      operationId: getMe
+      responses:
+        '200':
+          description: Successful response
+      security:
+        - bearerAuth: []
+
+  /auth/signup:
+    post:
+      summary: Sign Up
+      operationId: signUp
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+              required:
+                - email
+                - password
+      responses:
+        '200':
+          description: User signed up successfully
+      security: []
+
+  /auth/signin:
+    post:
+      summary: Sign In
+      operationId: signIn
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+              required:
+                - email
+                - password
+      responses:
+        '200':
+          description: User signed in successfully
+      security: []
+
+  /files/upload:
+    post:
+      summary: Upload Files
+      operationId: uploadFiles
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: File uploaded successfully
+      security:
+        - bearerAuth: []
+
+  /files/metadata/{fileId}:
+    get:
+      summary: Get Metadata
+      operationId: getMetadata
+      parameters:
+        - name: fileId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Metadata retrieved successfully
+      security:
+        - bearerAuth: []
+
+  /files/download/{fileId}:
+    get:
+      summary: Get Files
+      operationId: getFile
+      parameters:
+        - name: fileId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: File retrieved successfully
+      security:
+        - bearerAuth: []
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
